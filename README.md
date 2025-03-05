@@ -1,2 +1,0 @@
-# Portfolio
-https://nordbye.it/

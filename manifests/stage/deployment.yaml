@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-stage
+  namespace: stage-portfolio
+  labels:
+    app: stage-portfolio
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: stage-portfolio
+  template:
+    metadata:
+      labels:
+        app: stage-portfolio
+    spec:
+      containers:
+        - name: portfolio
+          image: registry.gitlab.bigd.no/homelab/k8s/k3sa/app-code/portfolio:stage
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources: {}
+      imagePullSecrets:
+        - name: gitlab-registry-secret
+
