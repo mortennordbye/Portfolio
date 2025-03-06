@@ -18,10 +18,8 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: registry.gitlab.bigd.no/homelab/k8s/k3sa/app-code/portfolio:prod
+          image: ghcr.io/mortennordbye/portfolio:prod
           imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources: {}
-      imagePullSecrets:
-        - name: gitlab-registry-secret
