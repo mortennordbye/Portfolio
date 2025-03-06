@@ -1,10 +1,12 @@
-# **Portfolio**
+# Portfolio
 
-[![Contributors][contributors-shield]][contributors-url]  
-[![Forks][forks-shield]][forks-url]  
-[![Stargazers][stars-shield]][stars-url]  
-[![Issues][issues-shield]][issues-url]  
-[![MIT License][license-shield]][license-url]  
+![Contributors](https://img.shields.io/github/contributors/mortennordbye/portfolio?style=flat-square)
+![Forks](https://img.shields.io/github/forks/mortennordbye/portfolio?style=flat-square)
+![Stars](https://img.shields.io/github/stars/mortennordbye/portfolio?style=flat-square)
+![Issues](https://img.shields.io/github/issues/mortennordbye/portfolio?style=flat-square)
+![License](https://img.shields.io/github/license/mortennordbye/portfolio?style=flat-square)
+![Last Workflow Run](https://img.shields.io/github/actions/workflow/status/mortennordbye/portfolio/build-and-push.yml?label=workflow&style=flat-square)
+## Website: [nordbye.it](https://nordbye.it)  
 
 This repository contains the source code and deployment configuration for my portfolio website. The project is designed to demonstrate skills in Kubernetes, GitOps, and Continuous Deployment (CD) while providing a fully automated and reproducible deployment workflow.
 
@@ -18,9 +20,8 @@ The site is deployed using Kubernetes with GitOps principles, where changes push
 - Traefik is used as an ingress controller to handle routing.
 
 ### **CI/CD Pipeline**
-- GitHub Actions automates the build, test, and deployment processes.
+- GitHub Actions automates the build processes.
 - Docker images are built based on branch changes and pushed to GitHub Packages.
-- A dedicated GitHub Actions runner is used for efficient builds.
 
 ### **Infrastructure as Code**
 - Kubernetes manifests define all necessary components, including deployments, services, and ingress routes.
