@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: portfolio-applications
-  namespace: argocd
+  name: portfolio-envs
+  namespace: argo-cd
 spec:
   generators:
     - git:
