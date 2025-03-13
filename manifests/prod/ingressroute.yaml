@@ -21,7 +21,7 @@ spec:
       kind: Rule
       middlewares:
         - name: default-headers
-          namespace: kube-system
+          namespace: traefik
       services:
         - name: nordbye-service-prod
           port: 80
