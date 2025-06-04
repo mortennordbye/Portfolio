@@ -128,35 +128,42 @@
 
   /**
    * Init isotope layout and filters
+   *
+   * Wrap initialization in the window load event to ensure all images
+   * are fully loaded before Isotope calculates the layout. This prevents
+   * layout issues when users scroll to the portfolio section before the
+   * page has finished loading.
    */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+      let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+      let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+      let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+      let initIsotope;
+      imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+        initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+          itemSelector: '.isotope-item',
+          layoutMode: layout,
+          filter: filter,
+          sortBy: sort
         });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+      });
 
+      isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
+        filters.addEventListener('click', function() {
+          isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+          this.classList.add('filter-active');
+          initIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          if (typeof aosInit === 'function') {
+            aosInit();
+          }
+        }, false);
+      });
+
+    });
   });
 
   /**
