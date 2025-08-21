@@ -15,7 +15,7 @@ COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN chown -R nginx:nginx /usr/share/nginx/html/nordbye.it && chmod -R 755 /usr/share/nginx/html/nordbye.it
 
 # Expose the port Nginx is running on
-EXPOSE 80
+EXPOSE 8080
 
 # Run Nginx
 CMD ["nginx", "-g", "daemon off;"]
